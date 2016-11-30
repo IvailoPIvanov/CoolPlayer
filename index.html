@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes" name="viewport">
+    <title>Cool Player</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstap.css">
+</head>
+<body>
+<video class="background_video" playsinline muted loop autoplay poster="img/cool.png">
+    <source src="/video/cool.mp4" type="video/mp4"/>
+    <source src="video/cool.ogg" type="video/ogg"/>
+</video>
+<div class="container-fluid">
+    <div class="row" id="header">
+        <div class="col-xs-7 col-sm-7 col-md-6 col-lg-6">
+            <a href="http://www.evolink.com/">
+                <div class="pull-left" id="logo"><img src="img/logo.svg" alt="Evolink logo bug 300x300"></div>
+                <h1 class="pull-left hidden-xs hidden-sm">
+                    Evolink Player
+                </h1>
+            </a>
+        </div>
+    </div>
+    <div class="row content_main" id="content">
+        <div id="builder-container">
+            <div class="col-xs-12" id="builder-header">
+                <div class="pull-left">
+                    <h1>Evolink Player Builder</h1>
+                    <p>Configure a player you can embed in your webpage.</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- Embed Code Modal -->
+            <div aria-hidden="true" aria-labelledby="embedModalLabel" class="modal fade" data-backdrop="static"
+                 id="embedModal" role="dialog" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4 class="modal-title" id="embedModalTitle">Evolink Player Embed Code</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                Use the following code examples to embed Evolink Player in your webpage.
+                            </div>
+                            <div class="form-group">
+                                <b>
+                                    1. JS Includes
+                                    <span class="fontWeightNormal">(place in the HEAD section)</span>
+                                </b>
+                                <br>
+                                <div class="pre-container">
+                                    <button class="btn btn-default btn-xs action-button"
+                                            id="buttonSelectEmbedJSIncludes"
+                                            type="button">Select
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <b>
+                                    2. Create an HTML element to contain your video
+                                    <span class="fontWeightNormal">(place in the BODY section)</span>
+                                </b>
+                                <br>
+                                <div class="pre-container">
+                                    <button class="btn btn-default btn-xs action-button"
+                                            id="buttonSelectEmbedPlayerElement"
+                                            type="button">Select
+                                    </button>
+                                    <pre id="embedPlayerElement">&lt;div id="playerElement" style="width:640px; height:480px; padding:0"&gt;&lt;/div&gt;</pre>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <b>
+                                    3. Embed the Evolink Player
+                                    <span class="fontWeightNormal">(place after the HTML code from #2)</span>
+                                </b>
+                                <br>
+                                <div class="pre-container">
+                                    <button class="btn btn-default btn-xs action-button"
+                                            id="buttonSelectEmbedJavascript"
+                                            type="button">Select
+                                    </button>
+                                    <pre id="embedJavascript">&lt;script type="text/javascript"&gt;
+EvolinkPlayer.create('playerElement',
+    {
+    "license":"PLAY1-6zAQQ-njxRC-pnnbx-Cmt7E-tcCjj",
+    "title":"",
+    "description":"",
+    "sourceURL":"http%3A%2F%2F82.119.84.155%3A1935%2Ffls%2FbntW-ffnv.stream%2Fplaylist.m3u8",
+    "autoPlay":false,
+    "volume":"75",
+    "mute":false,
+    "loop":false,
+    "audioOnly":false,
+    "uiShowQuickRewind":false
+    }
+);
+&lt;/script&gt;</pre>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Embed Code Modal -->
+            <div class="container-fluid">
+                <div class="row">
+                    <form id="formPlayerConfigurator" role="form">
+                        <input id="inputTextLC" maxlength="35" type="hidden"
+                               value="PLAY1-6zAQQ-njxRC-pnnbx-Cmt7E-tcCjj">
+                        <!-- left column -->
+                        <div class="col-md-6 col-xs-12 l">
+                            <div aria-multiselectable="true" class="panel-group" id="accordion" role="tablist"
+                                 style="margin-top:1em;">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" id="headingOne" role="tab">
+                                        <h4 class="panel-title">
+                                            <a aria-controls="collapseOne" aria-expanded="true" data-parent="#accordion"
+                                               data-toggle="collapse" href="#collapseOne" role="button">
+                                                Stream Source Information
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div aria-labelledby="headingOne" class="panel-collapse collapse in"
+                                         id="collapseOne"
+                                         role="tabpanel">
+                                        <div class="panel-body" style="padding:1em;">
+                                            <div class="form-group" id="inputLicenseSelector">
+                                                <label class="control-label" for="inputSourceURL">
+<span id="inputLicenseErrorMessage" style="display:none;">
+<i class="fa fa-exclamation-triangle"></i>
+</span>
+                                                    Choose your license key
+                                                </label>
+                                                <select class="form-control" id="inputSelectLicense">
+                                                    <option value="PLAY1-6zAQQ-njxRC-pnnbx-Cmt7E-tcCjj">
+                                                        PLAY1-xxxxx-xxxxx-xxxxx-xxxxx-tcCjj
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group" id="inputSourceURLGroup">
+                                                <label class="control-label" for="inputSourceURL">
+<span id="inputSourceURLErrorMessage" style="display:none;">
+<i class="fa fa-exclamation-triangle"></i>
+</span>
+                                                    Stream source (HLS) (required)
+                                                </label>
+                                                <input class="form-control" id="inputSourceURL" placeholder="Stream URL"
+                                                       type="url" value="">
+                                                <div class="alert-danger" id="inputSourceURLSecureError"
+                                                     style="display:none;padding:0.5em;">
+                                                    Stream source URL doesn't use a secured HTTP (HTTPS) connection.<br>To
+                                                    preview the stream,
+                                                    <a href="javascript://" id="linkToNonSecureBuilder">Switch to Player
+                                                        Builder over HTTP</a>.
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputTitle">Title</label>
+                                                <input class="form-control" id="inputTitle" maxlength="128" type="text">
+                                            </div>
+                                            <div class="form-group" id="inputDescriptionGroup">
+                                                <label for="inputDescription">Description</label>
+                                                <textarea class="form-control" id="inputDescription"
+                                                          maxlength="256"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input id="inputAudioOnly" type="checkbox">
+                                                        This is an audio-only stream
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Size</label>
+                                                <input id="inputWidth" name="width" type="hidden" value="640">
+                                                <input id="inputHeight" name="height" type="hidden" value="480">
+                                                <div id="inputSizeWidescreenOptions">
+                                                    <label class="fontWeightNormal">
+                                                        <input checked="checked" id="inputSizeAspectRatioWidescreen"
+                                                               name="inputSizeAspectRatio" type="radio"
+                                                               value="widescreen">
+                                                        Widescreen
+                                                    </label>
+                                                    <div class="indent">
+                                                        <select class="form-control" id="inputSizeWidescreen"
+                                                                style="margin-bottom: 10px; display: none;" disabled="">
+                                                            <option selected="selected" value="responsivexwide">1280x960
+                                                                (4:3)
+                                                            </option>
+                                                            <option value="1920x1080">1280x720 (16:9)</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div id="inputSizeWidescreenExtraOptions"></div>
+                                                <div id="inputSizeStandardOptions">
+                                                    <label class="fontWeightNormal">
+                                                        <input name="inputSizeAspectRatio" type="radio" value="standard"
+                                                               id="standard_input">
+                                                        Standard
+                                                    </label>
+                                                    <div class="indent">
+                                                        <select class="form-control" id="inputSizeStandard"
+                                                                style="margin-bottom: 10px; display: block;">
+                                                            <option selected="selected" value="responsivexwide"
+                                                                    id="standard">1280x960
+                                                                (4:3)
+                                                            </option>
+                                                            <option value="1920x1080" id="widescreen">1280x720 (16:9)
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div id="inputSizeStandardExtraOptions">
+                                                    <div class="form-inline indent" id="inputSizeMaxWidthOptions"
+                                                         style="display: none;">
+                                                        <div class="form-group" style="margin:0 15px 0 0;">
+                                                            <label class="fontWeightNormal" style="white-space:nowrap;">
+                                                                <input id="inputSizeUseMaxWidth" type="checkbox">
+                                                                Max width:
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-group" style="margin:0;">
+                                                            <input class="form-control number-input inline-element"
+                                                                   disabled="disabled" id="inputSizeMaxWidth"
+                                                                   style="display:inline-block;" type="text" value="">
+                                                        </div>
+                                                        <div class="form-group" style="margin:0;">
+                                                            <select class="form-control" disabled="disabled"
+                                                                    id="inputSizeMaxWidthUnits">
+                                                                <option selected="selected" value="px">px</option>
+                                                                <option value="percent">%</option>
+                                                                <option value="em">em</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="inputSizeAudioOnlyOptions" style="display: none;">
+                                                    <label class="fontWeightNormal">
+                                                        <input id="inputSizeAspectRatioAudioOnly"
+                                                               name="inputSizeAspectRatio" type="radio"
+                                                               value="audioonly">
+                                                        Standard (Audio Only)
+                                                    </label>
+                                                    <div class="indent">
+                                                        <select class="form-control" id="inputSizeAudioOnly"
+                                                                style="margin-bottom: 10px; display: none;" disabled="">
+                                                            <option selected="selected" value="320x120">320x120 (Audio
+                                                                Only/8:3)
+                                                            </option>
+                                                            <option value="320x42">320x42 (Audio Only/Compact)</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- panel -->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" id="headingTwo" role="tab">
+                                        <h4 class="panel-title">
+                                            <a aria-controls="collapseTwo" aria-expanded="false" class="collapsed"
+                                               data-parent="#accordion" data-toggle="collapse" href="#collapseTwo"
+                                               role="button">
+                                                Player Options
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div aria-labelledby="headingTwo" class="panel-collapse collapse" id="collapseTwo"
+                                         role="tabpanel">
+                                        <div class="panel-body" style="padding:1em;">
+                                            <div class="form-group">
+                                                <label>Playback Options</label>
+                                                <div class="checkbox">
+                                                <span class="inline-element">
+                                                <label>
+                                                <input id="inputAutoPlay" type="checkbox">
+                                                Autoplay
+                                                </label>
+                                                </span>
+                                                    <span class="inline-element">
+                                                <label>
+                                                <input id="inputLoop" type="checkbox">
+                                                  Loop
+                                                  </label>
+                                                     </span>
+                                                    <span class="inline-element">
+                                                <label>
+                                                   <input id="inputMute"
+                                                          type="checkbox">
+                                                       Start muted
+                                                       </label>
+                                                    </span>
+                                                </div>
+                                                <div class="form-inline" id="volumeOptions">
+                                                    <label class="control-label fontWeightNormal inline-element"
+                                                           for="inputVolume">Starting volume:</label>
+                                                    <input class="form-control number-input" id="inputVolume" max="100"
+                                                           min="0"
+                                                           style="display:inline-block;margin-top:10px;margin-left:-10px;"
+                                                           type="number" value="75">
+                                                    <label class="control-label fontWeightNormal inline-element">percent</label>
+                                                </div>
+                                            </div>
+                                            <div id="inputPosterFrameGroup">
+                                                <div class="form-group">
+                                                    <label>Video Poster Images</label>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input id="inputUseVideoPosterFrame" type="checkbox">
+                                                            Display images before the video starts and after video ends
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" id="optionsVideoPosterFrame"
+                                                     style="display:none;">
+                                                    <label class="fontWeightNormal" for="inputPosterFrameURL">Image to
+                                                        display before video starts:</label>
+                                                    <input class="form-control" id="inputPosterFrameURL"
+                                                           placeholder="Image URL" type="url">
+                                                    <br>
+                                                    <label class="fontWeightNormal" for="inputEndPosterFrameURL">Image
+                                                        to
+                                                        display after video ends:</label>
+                                                    <input class="form-control" id="inputEndPosterFrameURL"
+                                                           placeholder="Image URL" type="url">
+                                                    <br>
+                                                    <label class="fontWeightNormal">Image scaling mode:</label>
+                                                    <br>
+                                                    <label class="fontWeightNormal inline-element">
+                                                        <input checked="checked" id="inputPosterFrameFillModeFill"
+                                                               name="inputPosterFrameFillMode" type="radio"
+                                                               value="fill">
+                                                        Fill
+                                                    </label>
+                                                    <label class="fontWeightNormal inline-element">
+                                                        <input id="inputPosterFrameFillModeFit"
+                                                               name="inputPosterFrameFillMode" type="radio" value="fit">
+                                                        Fit
+                                                    </label>
+                                                    <!--
+                                                    <label class="fontWeightNormal inline-element">
+                                                    <input type="radio" name="inputPosterFrameFillMode" value="stretch">
+                                                    Stretch
+                                                    </label>
+                                                    -->
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Other Options</label>
+                                                <div class="checkbox form-inline">
+                                                    <label class="inline-element">
+                                                        <input checked="checked" id="inputUiShowQuickRewind"
+                                                               type="checkbox">
+                                                        Show Quick Rewind:
+                                                    </label>
+                                                    <br>
+                                                    <div class="indent" id="quickRewindOptions" style="margin-top:5px;">
+                                                        <input class="form-control number-input inline-element"
+                                                               id="inputUiQuickRewindSeconds" max="60" min="1"
+                                                               style="display:inline-block;" type="number" value="30">
+                                                        seconds
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- panel -->
+                            </div>
+                            <!-- panel-group -->
+                        </div>
+                        <!-- end left column -->
+                        <!-- right column -->
+                        <div class="col-md-6 col-xs-12" id="playerPreviewElementContainer">
+                            <div class="row">
+                                <div class="col-md-6" style="margin:1em 0;">
+                                    <button class="btn btn-primary" id="buttonPreview1" type="button"><i
+                                            class="fa fa-refresh"></i>&nbsp;Update Preview
+                                    </button>
+                                    <button class="btn btn-default" id="buttonGetEmbedCode" type="button"><i
+                                            class="fa fa-code"></i>&nbsp;Get Embed Code
+                                    </button>
+                                </div>
+                                <br>
+                                <div class="col-md-12">
+                                    <textarea class="textarea_stile" name="" id="area" cols="40" rows="2">I</textarea>
+                                </div>
+                            </div>
+                            <!--<div>-->
+                            <!--<div>-->
+                            <div class=" embed-responsive embed-responsive-16by9" id="video_size">
+                                <iframe class="embed-responsive-item" id="newVideo"
+                                        src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
+                                <!--</div>-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                        <a href="javascript://" id="playerPreviewElement-Focus"
+                           style="height:0;width:0;outline:0;"></a>
+
+                        <div id="playerPreviewElement-OverlayPlayShield" tabindex="0"></div>
+                        <div id="playerPreviewElement-TopBar"
+                             class="playerPreviewElement-Show playerPreviewElement-HideDescription">
+                            <a href="http://www.evolink.com/" target="_blank"
+                               id="playerPreviewElement-TopBar-Logo"
+                               class="playerPreviewElement-SVGAsset playerPreviewElement-Show"
+                               role="button" alt="Evlink Media Systems">Evolink Media Systems</a>
+                        </div>
+                        <div class="playerPreviewElement-Position-Center">
+                            <div id="playerPreviewElement-OverlayPlay"
+                                 class="playerPreviewElement-Show">
+                                <a href="javascript://" id="playerPreviewElement-OverlayPlayIcon"
+                                   class="playerPreviewElement-SVGAssetNoHover playerPreviewElement-Play"
+                                   role="button" alt="Play"></a>
+                            </div>
+                        </div>
+
+                        <div id="playerPreviewElement-MediaController"
+                             class="playerPreviewElement-Show">
+                            <div id="playerPreviewElement-MediaController-SeekBarContainer">
+
+                                <div id="playerPreviewElement-SeekBarGroup">
+                                    <div id="playerPreviewElement-SeekBarTracks">
+                                        <div id="playerPreviewElement-SeekBarHover">
+                                            <div id="playerPreviewElement-SeekBarHoverLabel">0:00</div>
+                                        </div>
+                                        <div id="playerPreviewElement-SeekBarTrack"></div>
+                                        <div id="playerPreviewElement-SeekBarLoaded"></div>
+                                        <div id="playerPreviewElement-SeekBarPlayed"
+                                             style="width: 100%;"></div>
+                                        <div id="playerPreviewElement-SeekBarClipStart"
+                                             style="position:absolute;width:1px;height:6px;top:18px;left:0;display:none;"></div>
+                                        <div id="playerPreviewElement-SeekBarClipEnd"
+                                             style="position:absolute;width:1px;height:6px;top:18px;left:0;display:none;"></div>
+                                        <div id="playerPreviewElement-SeekBarKnob"
+                                             class="playerPreviewElement-Asset playerPreviewElement-Scrubber"
+                                             style="left: 100%;"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="playerPreviewElement-MediaController-ControlsCenter">
+                                <a href="javascript://"
+                                   id="playerPreviewElement-MediaController-LiveIndicator"
+                                   class="playerPreviewElement-Show" tabindex="0" title="">
+                                                    <span id="playerPreviewElement-MediaController-LiveIndicatorLight"
+                                                          class="playerPreviewElement-MCButton playerPreviewElement-SVGAssetNoHover playerPreviewElement-Live"
+                                                          alt=""></span>
+                                    <span id="playerPreviewElement-MediaController-LiveIndicatorLabel">
+			                                                            	LIVE
+			                            </span>
+                                </a>
+                            </div>
+                            <div id="playerPreviewElement-MediaController-ControlsLeft">
+                                <a href="javascript://" tabindex="0"
+                                   id="playerPreviewElement-MediaController-PlayPauseButton"
+                                   class="playerPreviewElement-MCButton playerPreviewElement-SVGAsset playerPreviewElement-Play"
+                                   role="button" alt="Play/Pause"></a>
+                                <a href="javascript://" tabindex="0"
+                                   id="playerPreviewElement-MediaController-QuickRewindButton"
+                                   class="playerPreviewElement-MCButton playerPreviewElement-SVGAsset playerPreviewElement-Replay playerPreviewElement-Hide"
+                                   role="button" alt="Replay"><span
+                                        id="playerPreviewElement-MediaController-QuickRewindSeconds">30</span></a>
+
+                                <div id="playerPreviewElement-VolumeControl"
+                                     class="playerPreviewElement-VolumeOn">
+                                    <a href="javascript://"
+                                       id="playerPreviewElement-VolumeControl-VolumeButton"
+                                       class="playerPreviewElement-MCButton playerPreviewElement-SVGAsset playerPreviewElement-VolumeOn"
+                                       role="button" alt="Volume"></a>
+                                    <div id="playerPreviewElement-VolumeControl-Slider">
+                                        <div id="playerPreviewElement-VolumeControl-TrackGroup">
+                                            <div id="playerPreviewElement-VolumeControl-Track"></div>
+                                            <div id="playerPreviewElement-VolumeControl-Highlight"
+                                                 style="width: 75%;"></div>
+                                            <div id="playerPreviewElement-VolumeControl-Indicator"
+                                                 style="left: 75%;"></div>
+                                            <div id="playerPreviewElement-VolumeControl-Knob"
+                                                 style="display: none;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="playerPreviewElement-MediaController-ControlsRight">
+                                <a href="javascript://" tabindex="0"
+                                   id="playerPreviewElement-MediaController-FullscreenButton"
+                                   class="playerPreviewElement-MCButton playerPreviewElement-SVGAsset playerPreviewElement-FullScreen"
+                                   role="button" alt="Full Screen"></a>
+                                <a href="javascript://" tabindex="0"
+                                   id="playerPreviewElement-MediaController-BitrateSelector"
+                                   class="playerPreviewElement-BitrateSelector playerPreviewElement-Hide"
+                                   role="button" alt=""><span
+                                        id="playerPreviewElement-BitrateLabel">HD</span></a>
+                            </div>
+                        </div>
+                        <div id="playerPreviewElement-MediaController-BitrateSelector-Palette"
+                             class="playerPreviewElement-Hide"></div>
+
+
+                        <div id="playerPreviewElement-ContextMenu"
+                             class="playerPreviewElement-ContextMenu playerPreviewElement-Hide">
+                            Powered by Ivanov
+                        </div>
+                        <div class="alert-warning" id="previewAspectRatioMessage"
+                             style="padding: 0.5em; display: none;">
+                            Preview width has been set to match your browser window size. Your player is configured at
+                            <span id="previewAspectRatioMessageWidth" style="font-weight:bold;">1920</span>x
+                            <span id="previewAspectRatioMessageHeight" style="font-weight:bold;">1080</span>.
+                        </div>
+                        <div class="alert-warning" id="previewSmallSizeMessage" style="display:none;padding:0.5em;">
+                            Video player widths smaller than
+                            <b>320px</b>
+                            are not recommended.
+                        </div>
+
+                        <!-- end right column -->
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+
+
+
+/*--- Background ---*/
+
+.background_video{
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url("/img/cool.png") no-repeat;
+    background-size: cover;
+}
+
+.textarea_stile{
+    visibility: hidden;
+    margin-bottom: 2rem;
+}
+
+.textarea_stile_visible{
+    visibility: visible;
+    margin-bottom: 2rem;
+    background-color: rgba(38, 38, 38, 0.5);
+    color: white;
+    display: block;
+    width: 100%;
+}
+/*.content_main {*/
+    /*padding-left: 4%;*/
+/*}*/
