@@ -34,6 +34,14 @@
     display: block;
     width: 100%;
 }
-/*.content_main {*/
-    /*padding-left: 4%;*/
-/*}*/
+
+.display_none_embed{
+
+    display: none;
+}
+
+.display_embed{
+    display: block;
+}
+
+

@@ -52,3 +52,12 @@ document.getElementById('buttonGetEmbedCode').onclick=function(){
         + '"size": "' + size + '",'
         + '}}';
 };
+
+
+//
+// document.getElementById('buttonBigForm').onclick = function () {
+//
+//     document.getElementById("embedModal").className = "modal fade in";
+//     document.getElementById('embedModal').style.display = 'block';
+// };
+//
