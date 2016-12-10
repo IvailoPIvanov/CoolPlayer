@@ -1,39 +1,70 @@
 
-document.getElementById('inputSizeAspectRatioWidescreen').onclick = function (){
+
+document.getElementById('inputSizeAspectRatioWidescreen').onclick = function () {
     sizeWidescreen();
-    selectedOp ();
+    selectedOp();
 
 };
 
-document.getElementById('standard_input').onclick = function (){
+document.getElementById('standard_input').onclick = function () {
     sizeStandard();
-    selectedSt()
+    selectedSt();
 };
+/*-- Change video size to wide screen --*/
 
 function sizeWidescreen() {
     document.getElementById("video_size").className = "embed-responsive embed-responsive-16by9";
-}
+};
+/*-- Change drop down menu information to wide screen --*/
 
 function selectedOp() {
-    document.getElementById('widescreen').selected = 'selected'
+    document.getElementById('widescreen').selected = 'selected';
 };
+
+/*-- Change video size to normal 4:3 --*/
 
 function sizeStandard() {
     document.getElementById("video_size").className = "embed-responsive embed-responsive-4by3";
 }
 
+/*-- Change drop down menu information to normal 4:3 --*/
 function selectedSt() {
-    document.getElementById('standard').selected = 'selected'
+    document.getElementById('standard').selected = 'selected';
 };
 
 
-document.getElementById('buttonPreview1').onclick = function (){
+function selectedWideB() {
+    document.getElementById('standard_input').checked = false;
+    document.getElementById('inputSizeAspectRatioWidescreen').checked = true;
+};
+
+function selectedStB() {
+    document.getElementById('inputSizeAspectRatioWidescreen').checked = false;
+    document.getElementById('standard_input').checked = true;
+};
+
+document.getElementById('buttonPreview1').onclick = function () {
     var newSrc = '//www.youtube.com/embed/gEPmA3USJdI';
 
     document.getElementById('newVideo').src = newSrc;
 };
 
-document.getElementById('buttonGetEmbedCode').onclick=function(){
+function changeScreen() {
+
+    var screenSelect = document.getElementById('inputSizeStandard').value;
+    if (screenSelect === 'widescreen16:9') {
+        sizeWidescreen();
+        selectedWideB();
+    }
+    if (screenSelect === 'standart4:3') {
+        sizeStandard();
+        selectedStB();
+    }
+
+};
+
+
+document.getElementById('buttonGetEmbedCode').onclick = function () {
     var optionsOutputArea = document.getElementById('area');
     var license = document.getElementById('inputSelectLicense').value;
     var source_url = document.getElementById('inputSourceURL').value || null;
@@ -61,3 +92,4 @@ document.getElementById('buttonGetEmbedCode').onclick=function(){
 //     document.getElementById('embedModal').style.display = 'block';
 // };
 //
+

@@ -13,8 +13,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    </head>
 <body>
-<div style="width: 100%; height: 100%"
-     data-vide-bg="mp4: /video/cool.mp4, ogg: video/cool.ogg poster: img/cool.png" data-vide-options="posterType: png, loop: true, muted: true, position: 0% 0%">
+<div style="width: 100%; height: 100%;"
+     data-vide-bg="mp4: /video/cool.mp4, ogg: video/cool.ogg poster: img/cool.png" data-vide-options="resizing: true, posterType: ogg, loop: true, muted: true, position: 0% 0%">
 
 <!--<video class="background_video" playsinline muted loop autoplay poster="img/cool.png">-->
     <!--<source src="/video/cool.mp4" type="video/mp4"/>-->
@@ -38,8 +38,7 @@
                     <h1>Evolink Player Builder</h1>
                     <p>Configure a player you can embed in your webpage.</p>
                 </div>
-                <div class="clearfix"></div>
-            </div>
+                            </div>
             <!-- Embed Code Modal -->
             <div class="modal fade" id="embedModal" role="dialog" >
                 <div class="modal-dialog">
@@ -193,36 +192,37 @@ EvolinkPlayer.create('playerElement',
                                                 <input id="inputHeight" name="height" type="hidden" value="480">
                                                 <div id="inputSizeWidescreenOptions">
                                                     <label class="fontWeightNormal">
-                                                        <input checked="checked" id="inputSizeAspectRatioWidescreen"
-                                                               name="inputSizeAspectRatio" type="radio"
-                                                               value="widescreen">
-                                                        Widescreen
+                                                        <input checked="checked"  name="inputSizeAspectRatio" type="radio" value="standard"
+                                                               id="standard_input">
+                                                        Standard
                                                     </label>
+
                                                     <div class="indent">
                                                         <select class="form-control" id="inputSizeWidescreen"
                                                                 style="margin-bottom: 10px; display: none;" disabled="">
-                                                            <option selected="selected" value="responsivexwide">1280x960
+                                                            <option value="standart4:3">Standard
                                                                 (4:3)
                                                             </option>
-                                                            <option value="1920x1080">1280x720 (16:9)</option>
+                                                            <option selected="selected"  value="widescreen16:9">Widescreen (16:9)</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div id="inputSizeWidescreenExtraOptions"></div>
                                                 <div id="inputSizeStandardOptions">
                                                     <label class="fontWeightNormal">
-                                                        <input name="inputSizeAspectRatio" type="radio" value="standard"
-                                                               id="standard_input">
-                                                        Standard
+                                                        <input id="inputSizeAspectRatioWidescreen"
+                                                               name="inputSizeAspectRatio" type="radio"
+                                                               value="widescreen">
+                                                        Widescreen
                                                     </label>
                                                     <div class="indent">
                                                         <select class="form-control" id="inputSizeStandard"
-                                                                style="margin-bottom: 10px; display: block;">
-                                                            <option selected="selected" value="responsivexwide"
-                                                                    id="standard">1280x960
+                                                                style="margin-bottom: 10px; display: block;" onchange="changeScreen()">
+                                                            <option selected="selected" value="standart4:3"
+                                                                    id="standard">Standard
                                                                 (4:3)
                                                             </option>
-                                                            <option value="1920x1080" id="widescreen">1280x720 (16:9)
+                                                            <option value="widescreen16:9" id="widescreen">Widescreen (16:9)
                                                             </option>
                                                         </select>
                                                     </div>
@@ -408,7 +408,7 @@ EvolinkPlayer.create('playerElement',
                             </div>
                             <!--<div>-->
                             <!--<div>-->
-                            <div class=" embed-responsive embed-responsive-16by9" id="video_size">
+                            <div class=" embed-responsive embed-responsive-4by3" id="video_size">
                                 <iframe class="embed-responsive-item" id="newVideo"
                                         src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
                                 <!--</div>-->
@@ -435,85 +435,85 @@ EvolinkPlayer.create('playerElement',
                             </div>
                         </div>
 
-                        <div id="playerPreviewElement-MediaController"
-                             class="playerPreviewElement-Show">
-                            <div id="playerPreviewElement-MediaController-SeekBarContainer">
+                        <!--<div id="playerPreviewElement-MediaController"-->
+                             <!--class="playerPreviewElement-Show">-->
+                            <!--<div id="playerPreviewElement-MediaController-SeekBarContainer">-->
 
-                                <div id="playerPreviewElement-SeekBarGroup">
-                                    <div id="playerPreviewElement-SeekBarTracks">
-                                        <div id="playerPreviewElement-SeekBarHover">
-                                            <div id="playerPreviewElement-SeekBarHoverLabel">0:00</div>
-                                        </div>
-                                        <div id="playerPreviewElement-SeekBarTrack"></div>
-                                        <div id="playerPreviewElement-SeekBarLoaded"></div>
-                                        <div id="playerPreviewElement-SeekBarPlayed"
-                                             style="width: 100%;"></div>
-                                        <div id="playerPreviewElement-SeekBarClipStart"
-                                             style="position:absolute;width:1px;height:6px;top:18px;left:0;display:none;"></div>
-                                        <div id="playerPreviewElement-SeekBarClipEnd"
-                                             style="position:absolute;width:1px;height:6px;top:18px;left:0;display:none;"></div>
-                                        <div id="playerPreviewElement-SeekBarKnob"
-                                             class="playerPreviewElement-Asset playerPreviewElement-Scrubber"
-                                             style="left: 100%;"></div>
-                                    </div>
-                                </div>
+                                <!--<div id="playerPreviewElement-SeekBarGroup">-->
+                                    <!--<div id="playerPreviewElement-SeekBarTracks">-->
+                                        <!--<div id="playerPreviewElement-SeekBarHover">-->
+                                            <!--<div id="playerPreviewElement-SeekBarHoverLabel">0:00</div>-->
+                                        <!--</div>-->
+                                        <!--<div id="playerPreviewElement-SeekBarTrack"></div>-->
+                                        <!--<div id="playerPreviewElement-SeekBarLoaded"></div>-->
+                                        <!--<div id="playerPreviewElement-SeekBarPlayed"-->
+                                             <!--style="width: 100%;"></div>-->
+                                        <!--<div id="playerPreviewElement-SeekBarClipStart"-->
+                                             <!--style="position:absolute;width:1px;height:6px;top:18px;left:0;display:none;"></div>-->
+                                        <!--<div id="playerPreviewElement-SeekBarClipEnd"-->
+                                             <!--style="position:absolute;width:1px;height:6px;top:18px;left:0;display:none;"></div>-->
+                                        <!--<div id="playerPreviewElement-SeekBarKnob"-->
+                                             <!--class="playerPreviewElement-Asset playerPreviewElement-Scrubber"-->
+                                             <!--style="left: 100%;"></div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
 
-                            </div>
-                            <div id="playerPreviewElement-MediaController-ControlsCenter">
-                                <a href="javascript://"
-                                   id="playerPreviewElement-MediaController-LiveIndicator"
-                                   class="playerPreviewElement-Show" tabindex="0" title="">
-                                                    <span id="playerPreviewElement-MediaController-LiveIndicatorLight"
-                                                          class="playerPreviewElement-MCButton playerPreviewElement-SVGAssetNoHover playerPreviewElement-Live"
-                                                          alt=""></span>
-                                    <span id="playerPreviewElement-MediaController-LiveIndicatorLabel">
-			                                                            	LIVE
-			                            </span>
-                                </a>
-                            </div>
-                            <div id="playerPreviewElement-MediaController-ControlsLeft">
-                                <a href="javascript://" tabindex="0"
-                                   id="playerPreviewElement-MediaController-PlayPauseButton"
-                                   class="playerPreviewElement-MCButton playerPreviewElement-SVGAsset playerPreviewElement-Play"
-                                   role="button" alt="Play/Pause"></a>
-                                <a href="javascript://" tabindex="0"
-                                   id="playerPreviewElement-MediaController-QuickRewindButton"
-                                   class="playerPreviewElement-MCButton playerPreviewElement-SVGAsset playerPreviewElement-Replay playerPreviewElement-Hide"
-                                   role="button" alt="Replay"><span
-                                        id="playerPreviewElement-MediaController-QuickRewindSeconds">30</span></a>
+                            <!--</div>-->
+                            <!--<div id="playerPreviewElement-MediaController-ControlsCenter">-->
+                                <!--<a href="javascript://"-->
+                                   <!--id="playerPreviewElement-MediaController-LiveIndicator"-->
+                                   <!--class="playerPreviewElement-Show" tabindex="0" title="">-->
+                                                    <!--<span id="playerPreviewElement-MediaController-LiveIndicatorLight"-->
+                                                          <!--class="playerPreviewElement-MCButton playerPreviewElement-SVGAssetNoHover playerPreviewElement-Live"-->
+                                                          <!--alt=""></span>-->
+                                    <!--<span id="playerPreviewElement-MediaController-LiveIndicatorLabel">-->
+			                                                            	<!--LIVE-->
+			                            <!--</span>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                            <!--<div id="playerPreviewElement-MediaController-ControlsLeft">-->
+                                <!--<a href="javascript://" tabindex="0"-->
+                                   <!--id="playerPreviewElement-MediaController-PlayPauseButton"-->
+                                   <!--class="playerPreviewElement-MCButton playerPreviewElement-SVGAsset playerPreviewElement-Play"-->
+                                   <!--role="button" alt="Play/Pause"></a>-->
+                                <!--<a href="javascript://" tabindex="0"-->
+                                   <!--id="playerPreviewElement-MediaController-QuickRewindButton"-->
+                                   <!--class="playerPreviewElement-MCButton playerPreviewElement-SVGAsset playerPreviewElement-Replay playerPreviewElement-Hide"-->
+                                   <!--role="button" alt="Replay"><span-->
+                                        <!--id="playerPreviewElement-MediaController-QuickRewindSeconds">30</span></a>-->
 
-                                <div id="playerPreviewElement-VolumeControl"
-                                     class="playerPreviewElement-VolumeOn">
-                                    <a href="javascript://"
-                                       id="playerPreviewElement-VolumeControl-VolumeButton"
-                                       class="playerPreviewElement-MCButton playerPreviewElement-SVGAsset playerPreviewElement-VolumeOn"
-                                       role="button" alt="Volume"></a>
-                                    <div id="playerPreviewElement-VolumeControl-Slider">
-                                        <div id="playerPreviewElement-VolumeControl-TrackGroup">
-                                            <div id="playerPreviewElement-VolumeControl-Track"></div>
-                                            <div id="playerPreviewElement-VolumeControl-Highlight"
-                                                 style="width: 75%;"></div>
-                                            <div id="playerPreviewElement-VolumeControl-Indicator"
-                                                 style="left: 75%;"></div>
-                                            <div id="playerPreviewElement-VolumeControl-Knob"
-                                                 style="display: none;"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!--<div id="playerPreviewElement-VolumeControl"-->
+                                     <!--class="playerPreviewElement-VolumeOn">-->
+                                    <!--<a href="javascript://"-->
+                                       <!--id="playerPreviewElement-VolumeControl-VolumeButton"-->
+                                       <!--class="playerPreviewElement-MCButton playerPreviewElement-SVGAsset playerPreviewElement-VolumeOn"-->
+                                       <!--role="button" alt="Volume"></a>-->
+                                    <!--<div id="playerPreviewElement-VolumeControl-Slider">-->
+                                        <!--<div id="playerPreviewElement-VolumeControl-TrackGroup">-->
+                                            <!--<div id="playerPreviewElement-VolumeControl-Track"></div>-->
+                                            <!--<div id="playerPreviewElement-VolumeControl-Highlight"-->
+                                                 <!--style="width: 75%;"></div>-->
+                                            <!--<div id="playerPreviewElement-VolumeControl-Indicator"-->
+                                                 <!--style="left: 75%;"></div>-->
+                                            <!--<div id="playerPreviewElement-VolumeControl-Knob"-->
+                                                 <!--style="display: none;"></div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
 
-                            </div>
-                            <div id="playerPreviewElement-MediaController-ControlsRight">
-                                <a href="javascript://" tabindex="0"
-                                   id="playerPreviewElement-MediaController-FullscreenButton"
-                                   class="playerPreviewElement-MCButton playerPreviewElement-SVGAsset playerPreviewElement-FullScreen"
-                                   role="button" alt="Full Screen"></a>
-                                <a href="javascript://" tabindex="0"
-                                   id="playerPreviewElement-MediaController-BitrateSelector"
-                                   class="playerPreviewElement-BitrateSelector playerPreviewElement-Hide"
-                                   role="button" alt=""><span
-                                        id="playerPreviewElement-BitrateLabel">HD</span></a>
-                            </div>
-                        </div>
+                            <!--</div>-->
+                            <!--<div id="playerPreviewElement-MediaController-ControlsRight">-->
+                                <!--<a href="javascript://" tabindex="0"-->
+                                   <!--id="playerPreviewElement-MediaController-FullscreenButton"-->
+                                   <!--class="playerPreviewElement-MCButton playerPreviewElement-SVGAsset playerPreviewElement-FullScreen"-->
+                                   <!--role="button" alt="Full Screen"></a>-->
+                                <!--<a href="javascript://" tabindex="0"-->
+                                   <!--id="playerPreviewElement-MediaController-BitrateSelector"-->
+                                   <!--class="playerPreviewElement-BitrateSelector playerPreviewElement-Hide"-->
+                                   <!--role="button" alt=""><span-->
+                                        <!--id="playerPreviewElement-BitrateLabel">HD</span></a>-->
+                            <!--</div>-->
+                        <!--</div>-->
                         <div id="playerPreviewElement-MediaController-BitrateSelector-Palette"
                              class="playerPreviewElement-Hide"></div>
 
