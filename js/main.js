@@ -1,5 +1,3 @@
-
-
 document.getElementById('inputSizeAspectRatioWidescreen').onclick = function () {
     sizeWidescreen();
     selectedOp();
