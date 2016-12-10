@@ -1,0 +1,15 @@
+Index: index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- index.html	(date 1480511113000)
++++ index.html	(revision )
+@@ -535,7 +535,6 @@
+         </div>
+ 
+     </div>
+-
+ </div>
+ </div>
+ <script type="text/javascript" src="js/main.js"></script>
